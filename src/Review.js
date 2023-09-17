@@ -17,7 +17,7 @@ const Review = () => {
 
         return newRandomIndex;
       });
-    }, 5000); // Change review every 5 seconds
+    }, 5000); 
 
     return () => clearInterval(timer);
   }, [randomIndex]);
