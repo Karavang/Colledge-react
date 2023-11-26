@@ -1,22 +1,23 @@
-import React, { useState } from "react";
-import SingleQuestion from "./Question";
-import data from "./data";
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
-  const [questions] = useState(data);
-
-  return (
-    <main>
-      <div className="container">
-        <h3>questions and answers about login</h3>
-        <section className="info">
-          {questions.map((question) => (
-            <SingleQuestion key={question.id} {...question} />
-          ))}
-        </section>
-      </div>
-    </main>
-  );
+  const [backendData, setBackendData] = useState([{}]);
+  console.log(backendData);
+  async function getData() {
+    try {
+      const response = await fetch("/api");
+      if (!response.ok) {
+        throw new Error("Network is error");
+      }
+    } catch (error) {
+      console.error(`Problem with fetch:${error.message}`);
+    }
+  }
+  useEffect(() => {
+    getData();
+  }, []);
+  return <div></div>;
 }
 
 export default App;
