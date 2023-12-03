@@ -3,7 +3,7 @@ import { logout, selectUser } from "../features/userSlice";
 import "./Logout.css";
 
 const Logout = () => {
-  const user = useSelector(selectUser); // Get the entire user object
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
