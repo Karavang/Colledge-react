@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./App.css";
+import Login from "./components/Login";
+import { selectUser } from "./features/userSlice";
+import Logout from "./components/Logout";
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-  console.log(backendData);
-  async function getData() {
-    try {
-      const response = await fetch("/api");
-      if (!response.ok) {
-        throw new Error("Network is error");
-      }
-    } catch (error) {
-      console.error(`Problem with fetch:${error.message}`);
-    }
-  }
-  useEffect(() => {
-    getData();
-  }, []);
-  return <div></div>;
+  const user = useSelector(selectUser);
+  return <div className="App">{user ? <Logout /> : <Login />}</div>;
 }
 
 export default App;
