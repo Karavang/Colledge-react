@@ -1,12 +1,15 @@
-import { useSelector } from "react-redux";
-import "./App.css";
-import Login from "./components/Login";
-import { selectUser } from "./features/userSlice";
-import Logout from "./components/Logout";
-
+import React from "react";
+import Modal from "./Modal";
+import Sidebar from "./Sidebar";
+import Home from "./Home";
 function App() {
-  const user = useSelector(selectUser);
-  return <div className="App">{user ? <Logout /> : <Login />}</div>;
+  return (
+    <>
+      <Home />
+      <Modal />
+      <Sidebar />
+    </>
+  );
 }
 
 export default App;
